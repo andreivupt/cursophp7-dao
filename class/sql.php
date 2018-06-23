@@ -15,17 +15,17 @@ class Sql extends PDO{
         $this->conn = new PDO("mysql:host=localhost;dbname=dbphp7","root","");
     }
 
-    private function setParams($statement, $parameters = array()){
+    private function setParams($statment, $parameters = array()){
 
         foreach ($parameters as $key => $value){
 
-            $this->setParam($key,$value);
+            $this->setParam($statment,$key,$value);
         }
     }
 
-    private function setParam($statement,$key,$value){
+    private function setParam($statment,$key,$value){
 
-        $statement->bindParam($key,$value);
+        $statment->bindParam($key,$value);
     }
 
     //rawQuery: comando SQL para ser tratado
