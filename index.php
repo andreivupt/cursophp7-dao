@@ -43,10 +43,19 @@ echo json_encode($usuarios);
 /*
  * RETORNA LISTA VALIDANDO LOGIN
  *
- *
+ * $login = new Usuario();
+ * $login->getLogin("root","1234");
+ * echo $login;
  * */
 
-$login = new Usuario();
-$login->getLogin("root","1234");
-echo $login;
+
+
+$aluno = new Usuario();
+$aluno->setDeslogin("aluno");
+$aluno->setDesenha("@alun0");
+$aluno->insert();
+
+echo $aluno;
+
+
 

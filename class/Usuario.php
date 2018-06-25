@@ -85,14 +85,8 @@ class Usuario
             ":ID"=>$id
         ));
 
-        if (count($results) > 0){
-            $row = $results[0];
+        setData($results);
 
-            $this->setIdusuario($row['idusuario']);
-            $this->setDeslogin($row['deslogin']);
-            $this->setDesenha($row['desenha']);
-            $this->setDtcadastro(new DateTime($row['dtcadastro']));
-        }
     }
 
     public static function getList(){
@@ -113,6 +107,14 @@ class Usuario
 
     }
 
+    public function setData($data){
+
+        $this->setIdusuario($data['idusuario']);
+        $this->setDeslogin($data['deslogin']);
+        $this->setDesenha($data['desenha']);
+        $this->setDtcadastro(new DateTime($data['dtcadastro']));
+    }
+
     public function getLogin($login,$password){
 
         $sql= new Sql();
@@ -123,16 +125,23 @@ class Usuario
         ));
 
         if (count($result) > 0){
-            $row = $result[0];
-
-            $this->setIdusuario($row['idusuario']);
-            $this->setDeslogin($row['deslogin']);
-            $this->setDesenha($row['desenha']);
-            $this->setDtcadastro(new DateTime($row['dtcadastro']));
+            $this->setData($result[0]);
         }else{
             throw new Exception("USARIO OU SENHA INVALIDOS");
         }
+    }
 
+    public function insert(){
+        $sql = new Sql();
+
+        $result = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD)", array(
+            ':LOGIN'=>$this->getDeslogin(),
+            ':PASSWORD'=>$this->getDesenha()
+        ));
+
+        if (count($result) > 0) {
+            $this->setData($result[0]);
+        }
     }
 
     public function __toString()
