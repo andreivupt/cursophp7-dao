@@ -49,13 +49,33 @@ echo json_encode($usuarios);
  * */
 
 
+/*
+ * INSERINDO USUARIO NA TABELA
 
 $aluno = new Usuario();
 $aluno->setDeslogin("aluno");
 $aluno->setDesenha("@alun0");
 $aluno->insert();
-
 echo $aluno;
+*/
 
+/*
+ * ALTERANDO USUARIO
+ * $USUARIO = new Usuario();
+ * $usuario->loadBYId(1);
+ * $usuario->update("professor", "!@#$");
+ *
+ * echo $usuario;
+ */
+
+/*
+ * DELETANDO USUARIO
+ *
+ * $usuario = new Usuario();
+ * $usuario->loadById(2);
+ * $usuario->delete();
+ *
+ * echo $usuario;
+ */
 
 
