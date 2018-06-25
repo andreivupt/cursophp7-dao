@@ -9,17 +9,44 @@
 require_once ("config.php");
 
 /*
-
+UTILIZANDO A METODO SELECT DA SQL
 $sql = new Sql();
-
 $usuarios = $sql->select("SELECT * FROM tb_usuarios");
-
 echo json_encode($usuarios);
 */
 
+/*
+ * UTILIZANDO METODO SELECT PELO ID DE USUARIO
+ *
+ * $user = new Usuario();
+   $user->loadById(2);
+   echo $user;
+ * */
 
-$user = new Usuario();
 
-$user->loadById(2);
+/*
+ * RETORNA LISTA DE TODOS USUARIOS
+ *
+ * $lista = Usuario::getList();
+ * echo json_encode($lista);
+ *
+ * */
 
-echo $user;
+/*
+ * RETORNA LISTA BUSCANDO POR NOME
+ *
+ * $search = Usuario::search("e");
+ * echo json_encode($search);
+ * */
+
+
+/*
+ * RETORNA LISTA VALIDANDO LOGIN
+ *
+ *
+ * */
+
+$login = new Usuario();
+$login->getLogin("root","1234");
+echo $login;
+
